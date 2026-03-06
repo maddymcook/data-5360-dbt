@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: oliver
+    database: MADDYCOOK
+    schema: OLIVER_DW_SOURCE
+    tables:
+      - name: customer
+      - name: employee
+      - name: orders
+      - name: orderline
+      - name: product
+      - name: store
