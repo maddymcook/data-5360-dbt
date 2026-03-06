@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: oliver_dim_customer
+  - name: oliver_dim_date
+  - name: oliver_dim_employee
+  - name: oliver_dim_product
+  - name: oliver_dim_store
+  - name: fact_sales
+  - name: sales
