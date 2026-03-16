@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+
+  - name: insurance_landing
+    database: MADDYCOOK
+    schema: OLIVER_DW_SOURCE
+    tables:
+      - name: agent
+      - name: claim
+      - name: customer
+      - name: policy
+
+  - name: insurance_interactions
+    database: MADDYCOOK
+    schema: INSURANCE_DW_SOURCE
+    tables:
+      - name: customer_service_interactions
