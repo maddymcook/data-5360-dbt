@@ -2,9 +2,28 @@ version: 2
 
 models:
   - name: oliver_dim_customer
+    description: "Dimension table containing customer details"
+
   - name: oliver_dim_date
+    description: "Dimension table containing date attributes derived from order dates"
+
   - name: oliver_dim_employee
+    description: "Dimension table containing employee information"
+
   - name: oliver_dim_product
+    description: "Dimension table containing product details"
+
   - name: oliver_dim_store
+    description: "Dimension table containing store information"
+
   - name: fact_sales
+    description: "Fact table containing sales transactions"
+
   - name: sales
+    description: "Staging or intermediate sales model"
+
+  - name: stg_employee_certifications
+    description: "Staging model that extracts and parses employee certification data from JSON into structured columns"
+
+  - name: fact_certification
+    description: "Fact table containing employee certification events. Grain is one row per employee per certification awarded date."
