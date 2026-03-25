@@ -3,16 +3,20 @@ version: 2
 models:
   - name: dim_agent
     description: "Insurance Agent Dimension"
+
   - name: dim_customer
     description: "Insurance Customer Dimension"
+
   - name: dim_date
     description: "Insurance Date Dimension"
+
   - name: dim_policy
     description: "Insurance Policy Dimension"
     columns:
       - name: policy_key
         tests:
           - unique
+
   - name: fact_claim
     description: "Insurance Claim Fact"
     columns:
@@ -20,6 +24,7 @@ models:
         description: "A foreign key to the policy dimension"
         tests:
           - not_null
+
   - name: stg_customer_service_interactions
     description: |
       Staging model for customer service interactions.
@@ -28,15 +33,24 @@ models:
       - name: issue_type
         tests:
           - accepted_values:
-              values:
-                - "New Claim"
-                - "Claim Status"
-                - "Policy Change"
-                - "Coverage Info"
-                - "Billing Issue"
-                - "Policy Renewal"
+              arguments:
+                values:
+                  - "New Claim"
+                  - "Claim Status"
+                  - "Policy Change"
+                  - "Coverage Info"
+                  - "Billing Issue"
+                  - "Policy Renewal"
+
   - name: fact_interaction
     description: |
       Customer Service Interaction Fact.
-      The grain of this table is customer + agent + date
+      The grain of this table is customer + agent + date.
       Each record represents a call between a customer and an agent on a given date.
+    columns:
+      - name: customer_key
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
