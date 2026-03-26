@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_ecodate
+    description: "Ecoessentials Date Dimension"
+  - name: dim_email
+    description: "Ecoessentials Email Dimension"
+  - name: dim_campaign
+    description: "Ecoessentials Campaign Dimension"
+  - name: dim_ecocustomer
+    description: "Ecoessentials Customer Dimension"
+  - name: dim_product
+    description: "Ecoessentials Product Dimension"
+  - name: dim_eventtype
+    description: "Ecoessentials Event Type Dimension"
+  - name: fact_ecosales
+    description: "Ecoessentials Sales Fact. One row per product per order per customer per campaign per date."
+  - name: fact_emailevent
+    description: "Ecoessentials Email Event Fact. One row per event type per email per customer per campaign per date."
