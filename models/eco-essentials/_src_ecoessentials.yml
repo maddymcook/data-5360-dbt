@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: ecoessentials_landing
+    database: maddycook
+    schema: ecoessentials_transactional_db
+    tables:
+      - name: customer
+      - name: marketingemails
+      - name: orders
+        identifier: ORDER
+        quoting:
+          identifier: true
+      - name: order_line
+      - name: product
+      - name: promotional_campaign
