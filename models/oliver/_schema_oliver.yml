@@ -15,9 +15,31 @@ models:
 
   - name: oliver_dim_store
     description: "Dimension table containing store information"
+    columns:
+      - name: STORE_ID
+        description: "Store identifier"
+        tests:
+          - unique
+          - not_null
+
+      - name: STATE
+        description: "Store state"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Alaska', 'Arizona', 'Utah']
 
   - name: fact_sales
     description: "Fact table containing sales transactions"
+    columns:
+      - name: STORE_ID
+        description: "Foreign key to store dimension"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('oliver_dim_store')
+                field: STORE_ID
 
   - name: sales
     description: "Staging or intermediate sales model"
