@@ -59,7 +59,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['CLICK', 'OPEN', 'SENT']
+              arguments:
+                values: ['CLICK', 'OPEN', 'SENT']
 
   - name: fact_ecosales
     description: "Ecoessentials Sales Fact. One row per product per order per customer per campaign per date."
@@ -70,8 +71,9 @@ models:
       - name: customer_key
         tests:
           - relationships:
-              to: ref('dim_ecocustomer')
-              field: customer_key
+              arguments:
+                to: ref('dim_ecocustomer')
+                field: customer_key
 
   - name: fact_emailevent
     description: "Ecoessentials Email Event Fact. One row per event type per email per customer per campaign per date."
@@ -82,5 +84,6 @@ models:
       - name: date_key
         tests:
           - relationships:
-              to: ref('dim_ecodate')
-              field: date_key
+              arguments:
+                to: ref('dim_ecodate')
+                field: date_key
