@@ -3,17 +3,84 @@ version: 2
 models:
   - name: dim_ecodate
     description: "Ecoessentials Date Dimension"
+    columns:
+      - name: date_key
+        tests:
+          - unique
+          - not_null
+
   - name: dim_email
     description: "Ecoessentials Email Dimension"
+    columns:
+      - name: email_key
+        tests:
+          - unique
+      - name: emailid
+        tests:
+          - not_null
+
   - name: dim_campaign
     description: "Ecoessentials Campaign Dimension"
+    columns:
+      - name: campaign_key
+        tests:
+          - unique
+      - name: campaign_id
+        tests:
+          - not_null
+
   - name: dim_ecocustomer
     description: "Ecoessentials Customer Dimension"
+    columns:
+      - name: customer_key
+        tests:
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+
   - name: dim_product
     description: "Ecoessentials Product Dimension"
+    columns:
+      - name: product_key
+        tests:
+          - unique
+      - name: product_id
+        tests:
+          - not_null
+
   - name: dim_eventtype
     description: "Ecoessentials Event Type Dimension"
+    columns:
+      - name: eventtype_key
+        tests:
+          - unique
+      - name: eventtype
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['CLICK', 'OPEN', 'SENT']
+
   - name: fact_ecosales
     description: "Ecoessentials Sales Fact. One row per product per order per customer per campaign per date."
+    columns:
+      - name: sales_key
+        tests:
+          - unique
+      - name: customer_key
+        tests:
+          - relationships:
+              to: ref('dim_ecocustomer')
+              field: customer_key
+
   - name: fact_emailevent
     description: "Ecoessentials Email Event Fact. One row per event type per email per customer per campaign per date."
+    columns:
+      - name: emailevent_key
+        tests:
+          - unique
+      - name: date_key
+        tests:
+          - relationships:
+              to: ref('dim_ecodate')
+              field: date_key
