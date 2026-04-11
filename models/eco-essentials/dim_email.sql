@@ -9,3 +9,4 @@ select distinct
     EMAILNAME
 from {{ source('ecoessentials_landing', 'marketingemails') }}
 where EMAILID is not null
+  and upper(trim(cast(EMAILID as varchar))) <> 'NULL'
